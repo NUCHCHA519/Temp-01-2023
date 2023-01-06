@@ -1,0 +1,44 @@
+js ---- Resources\js\helpers.js --- _helper
+
+
+floatTheadReset()
+    * resize table flex thead --> class .float-thead
+
+_helper.init()
+    * initial helper js
+
+_helper.updateInint(element)
+    * ทำการ run lib input class [.datepicker, .datetimepicker, .daterangepicker, .timepicker, .monthpicker, .datatable-full, .datatable, .float-thead]
+    = element = tag html เช่น body, #modal-content .div-form-data
+
+_helper.startLoading(element)
+    * แสดง loading ใน element ที่กำหนด!
+    = element = tag html เช่น body, #modal-content, .div-form-data
+
+_helper.loading(element)
+    * แสดง loading ใน element ที่กำหนด!
+    = element = tag html เช่น body, #modal-content, .div-form-data
+
+_helper.stopLoading(element)
+    * หยุดแสดง loading ใน element ที่กำหนด!
+    = element = tag html เช่น body, #modal-content, .div-form-data
+
+_helper.numberFormat(num,digis)
+    * แสดงทศนิยมตัวเลข 
+
+_helper.popup(url, name, _w, _h)
+    * แสดง popup 
+     - url = Url Popup
+     - name = name Popup
+     - _w =  width
+     - _h = height
+_helper.popupPost(actionUrl, windowName, windowFeatures, keyParams, valueParams, _w, _h)
+    * แสดง popup 
+     - actionUrl = Url Popup
+     - windowName = name Popup
+     - windowFeatures =  " width=,height= top=, left= "
+     - keyParams = key type array เช่น [ "key1","key2",... ]
+     - valueParams = value type array เช่น [ "value1","value2",... ]
+     - _w = width
+     - _h = height
+

@@ -1,0 +1,72 @@
+@{
+    string export_type = ViewBag?.export?.ToUpper();
+}
+
+@if(export_type == "EXCEL"){
+    <!DOCTYPE html>
+}
+<html @(export_type == "EXCEL" ? @$"xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'" :"")>
+<head>
+    @if(export_type == "EXCEL"){
+        <!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>DATA1</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->
+        <title>Export Date @DateTime.Now.ToString("dd MMM yyyy")</title>
+        <meta charset="UTF-8"/>
+    }else{
+        <meta name="viewport" content="width=device-width" />
+        <title>Export Date @DateTime.Now.ToString("dd MMM yyyy")</title>
+        <link rel="stylesheet" href="@Url.Content("~/fonts/pdf-fonts.css")" />
+        <meta charset="UTF-8"/>
+    }
+    <style>
+        body {
+            margin: 0px;
+            font-family: 'Segoe UI', Arial;
+        }
+        table {
+            clear: both;
+            border: 1px solid darkgray;
+            border-collapse: collapse;
+            margin: auto;
+            width: 100%;
+        }
+
+        td, th {            
+            padding: 5px 10px;
+            text-align: center;
+            font-weight: 400;
+        }
+        th{
+            white-space: nowrap;
+            font-weight: bold;
+            background-color: #ddd;
+        }
+        .breakhere { page-break-after: always }
+        th.h5{ 
+            padding-top: 15px;
+            padding-bottom: 10px;
+            font-size: 20px; 
+            font-weight: bold; 
+            border-bottom: 1px solid #000;
+        }        
+        .float-left{
+            float: left;
+        }
+        .mr-3{  margin-right: 10px; }
+        .text-primary{ color: blue; }
+        .text-info{ color: lightblue; }
+        .text-warning{ color: yellow; }
+        .text-danger { color: red; }
+        .text-success { color: green; }
+        .text-400{ color: #333; font-weight: 400; }
+        .text-bold{ font-weight: bold; }
+        .text-nowrap{ white-space: nowrap; }
+        .text-left{ text-align: left; }
+        .text-center{ text-align: center; }
+        .text-right{ text-align: right; }
+    </style>
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+    <body>    
+        @RenderBody()
+    </body>
+</html>
